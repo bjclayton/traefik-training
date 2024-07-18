@@ -29,7 +29,7 @@ services:
       # Services
       - "traefik.http.services.catapp.loadbalancer.server.port=5000"
       # Middleware BasicAuth
-      - "traefik.http.middlewares.test-auth.basicauth.users=traefik:$$apr1$$.zPbdVg8$$LcHeyCZElH.JfxkxxlMPI.,user2:$$apr1$$XDrP1Fb1$$SZqSEjvNYW44vgJgI3iEP0"
+      - "traefik.http.middlewares.test-auth.basicauth users=traefik:$$apr1$$9iUV6iXG$$CPUOdGSpI7m/DSgTu7ZXD.,root:$$apr1$$tLi/CAzn$$BtPxoH4dkRt0bLj2QXEFj/"
       # user1: traefik password: training
       # user2: user2 password: test123
       # Create hash password -> echo $(htpasswd -nb user2 test123) | sed -e s/\\$/\\$\\$/g
