@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   traefik:
     # The latest official supported Traefik docker image
@@ -17,16 +15,16 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       # Copies the Let's Encrypt certificate locally for ease of backing up
       - ./letsencrypt:/letsencrypt
-       # Mounts the Traefik static configuration inside the Traefik container
+        # Mounts the Traefik static configuration inside the Traefik container
       - ./traefik.tls.yml:/etc/traefik/traefik.yml
 
-# Add the catapp service
+  # Add the catapp service
   catapp:
-     image: mikesir87/cats:1.0
-     labels:
-       - "traefik.enable=true"
-       - "traefik.http.routers.catapp.rule=Host(`your_domain_here`)"
-       - "traefik.http.routers.catapp.service=catapp"
-       - "traefik.http.services.catapp.loadbalancer.server.port=5000"
-       - "traefik.http.routers.catapp.entrypoints=websecure"
-       - "traefik.http.routers.catapp.tls.certresolver=myresolver"
+    image: mikesir87/cats:1.0
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.catapp.rule=Host(`velurra.shop`)"
+      - "traefik.http.routers.catapp.service=catapp"
+      - "traefik.http.services.catapp.loadbalancer.server.port=5000"
+      - "traefik.http.routers.catapp.entrypoints=websecure"
+      - "traefik.http.routers.catapp.tls.certresolver=myresolver"
